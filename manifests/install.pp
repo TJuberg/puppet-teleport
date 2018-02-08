@@ -7,15 +7,15 @@ class teleport::install {
 
   file { $teleport::extract_path:
     ensure => directory,
-  } ->
-  archive { $teleport::archive_path:
+  }
+  -> archive { $teleport::archive_path:
     ensure       => present,
     extract      => true,
     extract_path => $teleport::extract_path,
     source       => "https://github.com/gravitational/teleport/releases/download/${teleport::version}/teleport-${teleport::version}-linux-amd64-bin.tar.gz",
     creates      => "${teleport::extract_path}/teleport"
-  } ->
-  file {
+  }
+  -> file {
     "${teleport::bin_dir}/tctl":
       ensure => link,
       target => "${teleport::extract_path}/teleport/tctl";

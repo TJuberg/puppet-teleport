@@ -257,10 +257,9 @@ class teleport (
   validate_array($auth_service_tokens)
 
   anchor { 'teleport_first': }
-  ->
-  class { 'teleport::install': } ->
-  class { 'teleport::config': } ->
-  class { 'teleport::service': } ->
-  anchor { 'teleport_final': }
+  -> class { 'teleport::install': }
+  -> class { 'teleport::config': }
+  -> class { 'teleport::service': }
+  -> anchor { 'teleport_final': }
 
 }

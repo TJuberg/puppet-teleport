@@ -18,8 +18,8 @@ class teleport::config {
           owner   => 'root',
           group   => 'root',
           content => template('teleport/teleport.systemd.erb'),
-        }~>
-        exec { 'teleport-systemd-reload':
+        }
+        ~> exec { 'teleport-systemd-reload':
           command     => 'systemctl daemon-reload',
           path        => [ '/usr/bin', '/bin', '/usr/sbin' ],
           refreshonly => true,
