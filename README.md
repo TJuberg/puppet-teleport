@@ -1,6 +1,6 @@
 # puppet-teleport
 
-[![Build Status](https://travis-ci.org/tjuberg/puppet-teleport.svg?branch=master)](https://travis-ci.org/tjuberg/puppet-teleport)
+[![Build Status](https://travis-ci.org/TJuberg/puppet-teleport.svg?branch=master)](https://travis-ci.org/TJuberg/puppet-teleport)
 
 #### Table of Contents
 
