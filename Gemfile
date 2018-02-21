@@ -27,4 +27,8 @@ group :test do
   gem "puppetlabs_spec_helper"
   gem "hiera"
   gem "hiera-puppet-helper"
+
+  gem 'metadata-json-lint'
+  gem 'semantic_puppet'
+  gem 'rubocop'
 end

@@ -10,7 +10,7 @@ describe Puppet::Type.type(:teleport_user) do
 
   context 'when creating a user' do
     before :each do
-      @user = Puppet::Type.type(:teleport_user).new(:name => 'testing') 
+      @user = Puppet::Type.type(:teleport_user).new(name: 'testing') 
     end
 
     it 'should accept a user name' do
