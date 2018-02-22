@@ -11,3 +11,4 @@ junit/
 log/
 vendor/
 .ruby-version
+bin/
