@@ -1,0 +1,10 @@
+# Cop's to ignore
+
+# It would need a complete rewrite of the test to get this cop satisfied
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*.rb"
+Metrics/LineLength:
+  Exclude:
+    - "spec/**/*.rb"
+
