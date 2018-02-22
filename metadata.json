@@ -7,10 +7,11 @@
   "source": "https://github.com/jaxxstorm/puppet-teleport",
   "project_page": "https://github.com/jaxxstorm/puppet-teleport",
   "issues_url": "https://github.com/jaxxstorm/puppet-teleport/issues",
-  "tags": [
-    "teleport",
-    "ssh",
-    "cluster"
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">=3.2.0 <5.0.0"
+    }
   ],
   "operatingsystem_support": [
     {
@@ -38,10 +39,11 @@
       "version_requirement": ">=3.7.0 < 2015.3.0"
     }
   ],
-  "dependencies": [
-    {
-      "name": "puppetlabs/stdlib",
-      "version_requirement": ">=3.2.0 <5.0.0"
-    }
-  ]
+  "tags": [
+    "teleport",
+    "ssh",
+    "cluster"
+  ],
+  "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git",
+  "template-ref": "1.3.2-0-g07678c8"
 }
