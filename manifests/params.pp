@@ -3,13 +3,13 @@
 # This class is meant to be called from the main class
 # It sets variables according to platform
 class teleport::params {
-
-  $version                  = 'v2.4.0'
+  $version                  = 'v2.5.7'
+  $extract_path             = "/opt/teleport/${version}"
   $archive_path             = '/tmp/teleport.tar.gz'
   $bin_dir                  = '/usr/local/bin'
   $assets_dir               = '/usr/local/share/teleport'
   $config_path              = '/etc/teleport.yaml'
-  $nodename                 = $::fqdn
+  $nodename                 = $facts['networking']['fqdn']
   $auth_type                = 'local'
   $auth_second_factor       = 'otp'
   $auth_u2f_app_id          = 'https://localhost:3080'
@@ -24,23 +24,23 @@ class teleport::params {
   $proxy_tunnel_listen_addr = '127.0.0.1'
   $proxy_tunnel_listen_port = '3024'
 
-  case $::operatingsystem {
+  case $facts['os']['name'] {
     'RedHat', 'CentOS': {
-      if versioncmp($::operatingsystemrelease, '7.0') < 0 {
+      if versioncmp($facts['os']['release']['major'], '7') < 0 {
         $init_style  = 'init'
       } else {
         $init_style  = 'systemd'
       }
     }
     'Debian': {
-      if versioncmp($::operatingsystemrelease, '8.0') < 0 {
+      if versioncmp($facts['os']['release']['major'], '8') < 0 {
         fail('OS is currently not supported')
       } else {
         $init_style = 'systemd'
       }
     }
     'Ubuntu': {
-      if versioncmp($::operatingsystemrelease, '15.04') < 0 {
+      if versioncmp($facts['os']['release']['major'], '15') < 0 {
         fail('OS is currently not supported')
       } else {
         $init_style = 'systemd'

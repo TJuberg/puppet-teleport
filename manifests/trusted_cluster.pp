@@ -21,8 +21,8 @@ define teleport::trusted_cluster (
     owner   => 'root',
     group   => 'root',
     content => template('teleport/trusted_cluster.yaml.erb'),
-  } ~>
-  exec { "create_teleport_trusted_cluster_${name}":
+  }
+  ~> exec { "create_teleport_trusted_cluster_${name}":
     command     => "${teleport::bin_dir}/tctl create -f /etc/teleport_trusted_cluster_${name}.yaml",
     refreshonly => true,
     require     => Class['teleport::install']
