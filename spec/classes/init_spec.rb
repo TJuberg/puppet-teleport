@@ -17,59 +17,59 @@ describe 'teleport' do
 
   context 'when installing via URL by default' do
     let(:params) do
-      { version: 'v2.4.0' }
+      { version: 'v2.5.7' }
     end
 
     it {
       is_expected.to contain_archive('/tmp/teleport.tar.gz') \
-        .with(source: 'https://github.com/gravitational/teleport/releases/download/v2.4.0/teleport-v2.4.0-linux-amd64-bin.tar.gz')
+        .with(source: 'https://get.gravitational.com/teleport-v2.5.7-linux-amd64-bin.tar.gz')
     }
     it {
       is_expected.to contain_file('/usr/local/bin/tctl') \
-        .with(ensure: 'link', target: '/opt/teleport-v2.4.0/teleport/tctl')
+        .with(ensure: 'link', target: '/opt/teleport/v2.5.7/teleport/tctl')
     }
     it {
       is_expected.to contain_file('/usr/local/share/teleport') \
-        .with(ensure: 'link', target: '/opt/teleport-v2.4.0/teleport/app')
+        .with(ensure: 'link', target: '/opt/teleport/v2.5.7/teleport/app')
     }
   end
 
   context 'when installing a special version' do
     let(:params) do
       {
-        version: 'v.0.2.0-beta.8',
+        version: 'v.2.5.0',
       }
     end
 
     it {
       is_expected.to contain_archive('/tmp/teleport.tar.gz') \
-        .with(source: 'https://github.com/gravitational/teleport/releases/download/v.0.2.0-beta.8/teleport-v.0.2.0-beta.8-linux-amd64-bin.tar.gz')
+        .with(source: 'https://get.gravitational.com/teleport-v2.5.0-linux-amd64-bin.tar.gz')
     }
   end
 
   context 'when specifying a different archive path' do
     let(:params) do
       {
-        version: 'v0.1.0-alpha.7',
+        version: 'v2.4.4',
         archive_path: '/opt/teleport.tar.gz',
       }
     end
 
     it {
       is_expected.to contain_archive('/opt/teleport.tar.gz') \
-        .with(source: 'https://github.com/gravitational/teleport/releases/download/v0.1.0-alpha.7/teleport-v0.1.0-alpha.7-linux-amd64-bin.tar.gz')
+        .with(source: 'https://get.gravitational.com/teleport-v2.4.4-linux-amd64-bin.tar.gz')
     }
   end
 
   context 'when specifying a different bin_dir' do
     let(:params) do
       {
-        version: 'v2.4.0',
+        version: 'v2.5.7',
         bin_dir: '/usr/sbin',
       }
     end
 
-    it { is_expected.to contain_file('/usr/sbin/tctl').with(ensure: 'link', target: '/opt/teleport-v2.4.0/teleport/tctl') }
+    it { is_expected.to contain_file('/usr/sbin/tctl').with(ensure: 'link', target: '/opt/teleport/v2.5.7/teleport/tctl') }
   end
 
   context 'when specifying a different extract_path' do
