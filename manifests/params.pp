@@ -9,7 +9,7 @@ class teleport::params {
   $bin_dir                  = '/usr/local/bin'
   $assets_dir               = '/usr/local/share/teleport'
   $config_path              = '/etc/teleport.yaml'
-  $nodename                 = $facts['networking']['fqdn']
+  $nodename                 = $facts['fqdn']
   $auth_type                = 'local'
   $auth_second_factor       = 'otp'
   $auth_u2f_app_id          = 'https://localhost:3080'
